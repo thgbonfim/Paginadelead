@@ -1,0 +1,231 @@
+/* Estilos Globais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin: 10px 0 20px;
+    font-size: 1.2rem;
+}
+
+.btn {
+    background-color: #ff7f50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+section {
+    margin: 40px 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+.planos-lista {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.plano {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.plano h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.plano ul {
+    list-style: none;
+    padding: 0;
+}
+
+.plano ul li {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.plano .btn {
+    margin-top: 15px;
+}
+.depoimentos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.depoimento {
+    background-color: #f9f9f9;
+    border-left: 5px solid #ff7f50;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.depoimento p {
+    font-style: italic;
+    margin: 0 0 10px;
+}
+
+.depoimento h4 {
+    margin: 0;
+    font-weight: normal;
+    color: #555;
+}
+.recursos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.recurso {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.recurso h3 a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.recurso:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+/* Estilos Globais - Já existentes */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Novos Estilos para Responsividade */
+
+@media (max-width: 768px) {
+    .planos-lista {
+        flex-direction: column;
+    }
+
+    .depoimentos-lista, .recursos-lista {
+        flex-direction: column;
+    }
+
+    header, footer {
+        padding: 40px 0;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .plano, .depoimento, .recurso {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .plano, .depoimento, .recurso {
+        padding: 15px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Estilos para o Pop-up */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#popup-form input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
