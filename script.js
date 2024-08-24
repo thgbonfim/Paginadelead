@@ -4,14 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const closePopup = document.querySelector('.close-popup');
     const popupForm = document.getElementById('popup-form');
 
+    // Validação e envio do formulário principal
     form.addEventListener('submit', (event) => {
         event.preventDefault(); // Evita o envio do formulário por enquanto
 
-        const nome = form.nome.value.trim();
-        const email = form.email.value.trim();
-        const telefone = form.telefone.value.trim();
-        const empresa = form.empresa.value.trim();
-        const interesse = form.interesse.value;
+        const nome = form.querySelector('[name="nome"]').value.trim();
+        const email = form.querySelector('[name="email"]').value.trim();
+        const telefone = form.querySelector('[name="telefone"]').value.trim();
+        const empresa = form.querySelector('[name="empresa"]').value.trim();
+        const interesse = form.querySelector('[name="interesse"]').value;
 
         if (nome === '' || email === '' || telefone === '' || empresa === '' || interesse === '') {
             alert('Por favor, preencha todos os campos.');
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         popup.style.display = 'flex';
     }, 5000); // 5 segundos
 
+    // Fechar o pop-up
     closePopup.addEventListener('click', () => {
         popup.style.display = 'none';
     });
@@ -33,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adicionar funcionalidade ao formulário do pop-up
     popupForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        const email = popupForm.email.value.trim();
+        const email = popupForm.querySelector('[name="email"]').value.trim();
         if (email === '') {
             alert('Por favor, insira um e-mail.');
         } else {
