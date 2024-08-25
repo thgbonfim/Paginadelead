@@ -336,5 +336,88 @@ footer p {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .banner-desta
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .banner-destaque {
+        padding: 60px 20px;
+        height: auto;
+    }
+
+    .banner-destaque h1 {
+        font-size: 2.5rem;
+    }
+
+    .banner-destaque p {
+        font-size: 1.2rem;
+    }
+
+    .banner-destaque .btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .planos-lista,
+    .recursos-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .depoimentos-lista {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    .carrossel-container {
+        flex-direction: column;
+    }
+
+    .depoimento {
+        flex: 1 0 auto; /* Ajuste para o depoimento ocupar toda a largura disponível */
+        margin-bottom: 20px; /* Espaçamento entre depoimentos no carrossel */
+    }
+
+    form input, form select, form button {
+        font-size: 0.9rem;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-destaque h1 {
+        font-size: 2rem;
+    }
+
+    .banner-destaque p {
+        font-size: 1rem;
+    }
+
+    .banner-destaque .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+
+    .plano h3 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .popup-content {
+        width: 90%;
+    }
 }
