@@ -192,6 +192,7 @@ h2 {
 .carrossel-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    width: 100%;
 }
 
 .depoimento {
@@ -331,4 +332,9 @@ footer p {
 
 .popup-form button:hover {
     background-color: #2563EB;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .banner-desta
 }
