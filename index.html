@@ -109,26 +109,32 @@
     </section>
 
     <!-- Seção de Depoimentos -->
-    <section id="depoimentos">
-        <div class="container">
-            <h2>Depoimentos de Clientes</h2>
-            <div class="depoimentos-lista">
+<!-- Seção de Depoimentos -->
+<section id="depoimentos">
+    <div class="container">
+        <h2>Depoimentos de Clientes</h2>
+        <div class="carrossel">
+            <div class="carrossel-container">
                 <div class="depoimento">
-                    <p>"Excelente serviço! Nossos funcionários estão sempre conectados e nunca tivemos problemas de
-                        cobertura."</p>
+                    <p>"Excelente serviço! Nossos funcionários estão sempre conectados e nunca tivemos problemas de cobertura."</p>
                     <h4>— Ana Silva, CEO da Tech Solutions</h4>
                 </div>
                 <div class="depoimento">
-                    <p>"Os planos são muito flexíveis e o suporte ao cliente é impecável. Recomendo fortemente!"</p>
-                    <h4>— Carlos Fernandes, Diretor de TI da FinCorp</h4>
+                    <p>"A equipe foi muito eficiente e a implementação foi feita rapidamente. Recomendo!"</p>
+                    <h4>— João Santos, CTO da Innovatech</h4>
                 </div>
                 <div class="depoimento">
-                    <p>"Mudamos para este provedor há 6 meses e a diferença na qualidade do serviço é notável."</p>
-                    <h4>— Maria Oliveira, Gerente de Operações da EduTech</h4>
+                    <p>"Serviço de alta qualidade e suporte impecável. Estamos muito satisfeitos!"</p>
+                    <h4>— Maria Oliveira, Diretora da Global Corp</h4>
                 </div>
+                <!-- Adicione mais depoimentos conforme necessário -->
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
+    
 
     <!-- Seção de Recursos -->
     <section id="recursos">
@@ -155,41 +161,42 @@
     <section id="formulario-lead">
         <div class="container">
             <h2>Solicite um Orçamento</h2>
-            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-            <script>
-                hbspt.forms.create({
-                    region: "na1",
-                    portalId: "47170835",
-                    formId: "109d455e-5686-4677-a385-cf30a8f20779"
-                });
-            </script>
+            <form>
+                <input type="text" name="name" placeholder="Seu Nome" required>
+                <input type="email" name="email" placeholder="Seu Email" required>
+                <input type="tel" name="phone" placeholder="Seu Telefone" required>
+                <input type="text" name="company" placeholder="Nome da Sua Empresa" required>
+                <select name="interest" required>
+                    <option value="" disabled selected>Qual plano você está interessado?</option>
+                    <option value="basic">Plano Básico</option>
+                    <option value="advanced">Plano Avançado</option>
+                    <option value="premium">Plano Premium</option>
+                </select>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
         </div>
     </section>
 
     <!-- Rodapé -->
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Planos Empresariais. Todos os direitos reservados.</p>
-        </div>
+        <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="js/script.js"></script>
-
     <!-- Pop-up de Captura de Leads -->
-    <div id="lead-popup" class="popup">
-        <div class="popup-content">
-            <h2>Receba um Orçamento Personalizado</h2>
-            <p>Preencha o formulário para que possamos enviar uma proposta personalizada para sua empresa.</p>
-            <!-- Formulário de Lead -->
-            <form action="#" method="post">
-                <input type="text" name="name" placeholder="Seu Nome" required>
-                <input type="email" name="email" placeholder="Seu Email" required>
-                <textarea name="message" placeholder="Sua Mensagem"></textarea>
-                <button type="submit" class="btn">Enviar</button>
-            </form>
-            <button class="btn-close">Fechar</button>
-        </div>
+   <div class="popup" id="lead-popup">
+    <div class="popup-content">
+        <span class="btn-close close-popup">&times;</span>
+        <h2>Não perca a oportunidade!</h2>
+        <p>Insira seu e-mail para receber mais informações sobre nossos planos e ofertas especiais.</p>
+        <form id="popup-form">
+            <input type="email" name="email" placeholder="Seu Email" required>
+            <button type="submit" class="btn">Inscrever-se</button>
+        </form>
     </div>
+</div>
+
+
+    <script src="script.js"></script>
 </body>
 
 </html>
