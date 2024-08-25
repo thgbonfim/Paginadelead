@@ -1,80 +1,56 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('#formulario-lead form');
-    const popup = document.getElementById('lead-popup');
-    const closePopup = document.querySelector('.close-popup');
-    const popupForm = document.getElementById('popup-form');
+document.addEventListener('DOMContentLoaded', function() {
+    // Menu de Navegação Responsivo
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.querySelector('nav ul');
 
-    // Validação e envio do formulário principal
-    if (form) {
-        form.addEventListener('submit', (event) => {
-            event.preventDefault(); // Evita o envio do formulário por enquanto
+    menuToggle.addEventListener('click', function() {
+        menu.classList.toggle('show-menu'); // Abre e fecha o menu
+    });
 
-            const nome = form.querySelector('[name="name"]').value.trim();
-            const email = form.querySelector('[name="email"]').value.trim();
-            const telefone = form.querySelector('[name="phone"]').value.trim();
-            const empresa = form.querySelector('[name="company"]').value.trim();
-            const interesse = form.querySelector('[name="interest"]').value;
-
-            if (nome === '' || email === '' || telefone === '' || empresa === '' || interesse === '') {
-                alert('Por favor, preencha todos os campos.');
-            } else {
-                alert('Formulário enviado com sucesso!');
-                form.reset(); // Limpa os campos do formulário
-            }
-        });
+    // Carrossel Depoimentos
+    const carrosselContainer = document.querySelector('.carrossel-container');
+    const depoimentos = document.querySelectorAll('.depoimento');
+    let currentIndex = 0;
+    
+    function mostrarDepoimento(index) {
+        // Calcula a nova posição para o carrossel
+        const offset = index * depoimentos[0].clientWidth;
+        carrosselContainer.style.transform = `translateX(-${offset}px)`;
     }
 
-    // Mostrar o pop-up após alguns segundos
-    if (popup) {
-        setTimeout(() => {
-            popup.style.display = 'flex';
-        }, 5000); // 5 segundos
+    // Eventos para o carrossel: navegação pelos depoimentos
+    document.querySelector('.prev').addEventListener('click', function() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : depoimentos.length - 1;
+        mostrarDepoimento(currentIndex);
+    });
+
+    document.querySelector('.next').addEventListener('click', function() {
+        currentIndex = (currentIndex < depoimentos.length - 1) ? currentIndex + 1 : 0;
+        mostrarDepoimento(currentIndex);
+    });
+
+    // Suporte ao toque para dispositivos móveis
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carrosselContainer.addEventListener('touchstart', function(event) {
+        touchStartX = event.changedTouches[0].screenX;
+    });
+
+    carrosselContainer.addEventListener('touchend', function(event) {
+        touchEndX = event.changedTouches[0].screenX;
+        handleSwipeGesture();
+    });
+
+    function handleSwipeGesture() {
+        if (touchEndX < touchStartX) {
+            // Swipe para a esquerda
+            currentIndex = (currentIndex < depoimentos.length - 1) ? currentIndex + 1 : 0;
+        }
+        if (touchEndX > touchStartX) {
+            // Swipe para a direita
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : depoimentos.length - 1;
+        }
+        mostrarDepoimento(currentIndex);
     }
-
-    // Fechar o pop-up
-    if (closePopup) {
-        closePopup.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
-    }
-
-    // Adicionar funcionalidade ao formulário do pop-up
-    if (popupForm) {
-        popupForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const email = popupForm.querySelector('[name="email"]').value.trim();
-            if (email === '') {
-                alert('Por favor, insira um e-mail.');
-            } else {
-                alert('Obrigado! Em breve entraremos em contato.');
-                popup.style.display = 'none';
-                popupForm.reset();
-            }
-        });
-    }
-// Carrossel de Depoimentos
-const carrosselContainer = document.querySelector('.carrossel-container');
-const depoimentos = document.querySelectorAll('.depoimento');
-
-if (carrosselContainer && depoimentos.length > 0) {
-    let index = 0;
-    const totalDepoimentos = depoimentos.length;
-
-    function mostrarDepoimento() {
-        const largura = depoimentos[0].clientWidth;
-        carrosselContainer.style.transform = `translateX(-${largura * index}px)`;
-    }
-
-    function proximoDepoimento() {
-        index = (index + 1) % totalDepoimentos;
-        mostrarDepoimento();
-    }
-
-    // Inicializa o carrossel
-    mostrarDepoimento();
-    setInterval(proximoDepoimento, 5000); // Muda a cada 8 segundos
-
-    // Ajuste da largura do carrossel em redimensionamentos
-    window.addEventListener('resize', mostrarDepoimento);
-}
 });

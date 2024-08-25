@@ -14,6 +14,20 @@ body {
     margin: 0;
 }
 
+/* Botão de Menu Hambúrguer */
+#menu-toggle {
+    display: none; /* Esconder o botão inicialmente */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #1E3A8A;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001; /* Sobrepõe outros elementos */
+}
+
 /* Menu de Navegação */
 nav {
     position: fixed;
@@ -30,6 +44,7 @@ nav ul {
     justify-content: center;
     padding: 10px 0;
     list-style: none;
+    margin: 0;
 }
 
 nav ul li {
@@ -46,6 +61,29 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #10B981;
+}
+
+/* Estilos para o menu de navegação em dispositivos móveis */
+@media (max-width: 768px) {
+    /* Mostrar o botão de menu hambúrguer e esconder o menu inicial */
+    #menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none; /* Esconde o menu inicialmente em dispositivos móveis */
+        flex-direction: column;
+        padding: 20px 0;
+        background-color: #FFFFFF;
+    }
+
+    nav ul.show-menu {
+        display: flex; /* Mostra o menu quando a classe 'show-menu' é adicionada */
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
 }
 
 /* Container Principal */
@@ -163,14 +201,6 @@ h2 {
 }
 
 /* Seção de Depoimentos */
-#depoimentos {
-    text-align: center; /* Centraliza o texto dentro da seção */
-}
-
-#depoimentos h2 {
-    margin-bottom: 20px; /* Adiciona um espaço abaixo do título */
-}
-
 .depoimentos-lista {
     display: flex;
     flex-direction: row;
@@ -192,17 +222,34 @@ h2 {
 .carrossel-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 100%;
+    overflow-x: auto; /* Adiciona rolagem horizontal */
+    scroll-snap-type: x mandatory; /* Rola suavemente entre os itens */
 }
 
 .depoimento {
-    flex: 1 0 100%; /* Faz cada depoimento ocupar 100% da largura do carrossel */
+    flex: 0 0 auto; /* Mantém a largura fixa dos depoimentos no carrossel */
+    width: 100%; /* Alinha a largura do depoimento com a largura do carrossel */
+    scroll-snap-align: center; /* Centraliza o depoimento visível no carrossel */
     box-sizing: border-box;
     padding: 20px;
     background: #f9f9f9;
     border-radius: 8px;
-    text-align: center; /* Centraliza o texto dentro do depoimento */
-    min-width: 300px; /* Define uma largura mínima para os depoimentos */
+    text-align: center;
+    min-width: 300px; /* Largura mínima para os depoimentos */
+}
+
+@media (max-width: 768px) {
+    .carrossel-container {
+        display: flex;
+        flex-direction: row; /* Mantém os itens em linha horizontal */
+        gap: 10px; /* Espaçamento entre os depoimentos */
+        overflow-x: auto; /* Permite rolagem horizontal */
+        scroll-snap-type: x mandatory; /* Suaviza a rolagem */
+    }
+
+    .depoimento {
+        flex: 0 0 80%; /* Define a largura dos depoimentos para 80% da tela em dispositivos móveis */
+    }
 }
 
 /* Seção de Recursos */
@@ -273,151 +320,45 @@ footer p {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-    z-index: 1001; /* Garante que o botão esteja sobre outros elementos */
-}
-
-/* Estilo do pop-up */
-.popup {
-    display: none; /* Inicialmente oculto */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.popup-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    position: relative;
-}
-
-.close-popup {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
+    background-color: #FFFFFF;
+    border: none;
     color: #1E3A8A;
-}
-
-.close-popup:hover {
-    color: #10B981;
-}
-
-.popup-form input {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-.popup-form button {
-    background-color: #3B82F6;
-    color: #FFFFFF;
+    font-size: 1.2rem;
     cursor: pointer;
-    padding: 10px;
+    border-radius: 50%;
+    padding: 5px 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-close:hover {
+    background-color: #F3F4F6;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Popup de Captura de Leads */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none; /* Escondido por padrão */
     border-radius: 8px;
 }
 
-.popup-form button:hover {
-    background-color: #2563EB;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    .banner-destaque {
-        padding: 60px 20px;
-        height: auto;
-    }
-
-    .banner-destaque h1 {
-        font-size: 2.5rem;
-    }
-
-    .banner-destaque p {
-        font-size: 1.2rem;
-    }
-
-    .banner-destaque .btn {
-        font-size: 1rem;
-        padding: 10px 20px;
-    }
-
-    .planos-lista,
-    .recursos-lista {
-        grid-template-columns: 1fr;
-    }
-
-    .depoimentos-lista {
-        flex-direction: column;
-        padding: 0 10px;
-    }
-
-    .carrossel-container {
-        flex-direction: column;
-    }
-
-    .depoimento {
-        flex: 1 0 auto; /* Ajuste para o depoimento ocupar toda a largura disponível */
-        margin-bottom: 20px; /* Espaçamento entre depoimentos no carrossel */
-    }
-
-    form input, form select, form button {
-        font-size: 0.9rem;
-    }
-
-    footer p {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .banner-destaque h1 {
-        font-size: 2rem;
-    }
-
-    .banner-destaque p {
-        font-size: 1rem;
-    }
-
-    .banner-destaque .btn {
-        font-size: 0.9rem;
-        padding: 8px 16px;
-    }
-
-    nav ul li a {
-        font-size: 0.9rem;
-    }
-
-    .plano h3 {
-        font-size: 1.5rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    .popup-content {
-        width: 90%;
-    }
+.popup.show {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
 }
