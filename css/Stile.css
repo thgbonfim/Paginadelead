@@ -16,20 +16,20 @@ body {
 
 /* Menu de Navegação */
 nav {
-    background-color: #1E3A8A;
-    color: #FFFFFF;
     position: fixed;
-    width: 100%;
     top: 0;
     left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
 nav ul {
     display: flex;
     justify-content: center;
+    padding: 10px 0;
     list-style: none;
-    padding: 15px 0;
 }
 
 nav ul li {
@@ -37,9 +37,10 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #FFFFFF;
+    color: #1E3A8A;
     text-decoration: none;
     font-size: 1rem;
+    font-weight: bold;
     transition: color 0.3s ease;
 }
 
@@ -51,43 +52,50 @@ nav ul li a:hover {
 .container {
     width: 90%;
     max-width: 1200px;
-    margin: 80px auto 0; /* Ajuste para o espaço do menu fixo */
+    margin: 0 auto;
     padding: 20px;
 }
 
-/* Cabeçalho */
-header {
-    background-color: #1E3A8A;
+/* Banner de Destaque */
+.banner-destaque {
+    background-color: #1E3A8A; /* Cor sólida do fundo */
     color: #FFFFFF;
-    padding: 20px 0;
+    padding: 80px 20px; /* Espaçamento interno */
     text-align: center;
     margin-bottom: 20px;
+    border-bottom: 2px solid #10B981;
+    position: relative;
+    height: 300px; /* Altura do banner */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+.banner-destaque h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
 }
 
-header p {
+.banner-destaque p {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+.banner-destaque .btn {
     font-size: 1.2rem;
-}
-
-/* Botões */
-.btn {
+    padding: 15px 30px;
     background-color: #10B981;
     color: #FFFFFF;
-    padding: 12px 24px;
-    border-radius: 8px;
     text-decoration: none;
-    font-size: 1rem;
+    border-radius: 8px;
     transition: background-color 0.3s ease;
     border: none;
     cursor: pointer;
 }
 
-.btn:hover {
-    background-color: #0F766E;
+.banner-destaque .btn:hover {
+    background-color: #059669;
 }
 
 /* Seções */
@@ -106,20 +114,105 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Listas de Planos, Depoimentos e Recursos */
-.planos-lista, .depoimentos-lista, .recursos-lista {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+/* Seção Sobre os Planos */
+.planos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-.plano, .depoimento, .recurso {
-    background-color: #F3F4F6;
+.plano {
+    background-color: #FFFFFF;
     border-radius: 8px;
     padding: 20px;
-    width: 48%;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plano:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.plano h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.plano ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.plano .btn {
+    background-color: #10B981; /* Cor do botão */
+    color: #FFFFFF;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.plano .btn:hover {
+    background-color: #059669; /* Cor do botão ao passar o mouse */
+}
+
+/* Seção de Depoimentos */
+.depoimentos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.depoimento {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.depoimento p {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.depoimento h4 {
+    font-weight: bold;
+    color: #1E3A8A;
+}
+
+/* Seção de Recursos */
+.recursos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.recurso {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recurso:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.recurso h3 a {
+    color: #1E3A8A;
+    text-decoration: none;
+}
+
+.recurso h3 a:hover {
+    text-decoration: underline;
 }
 
 /* Estilos para Formulários */
@@ -151,28 +244,65 @@ footer {
     margin-top: 40px;
 }
 
-/* Banner de Destaque */
-.banner-destaque {
-    background-image: linear-gradient(to right, #3B82F6, #1E3A8A);
-    color: #FFFFFF;
-    padding: 60px 0;
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Pop-up de Captura de Leads */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
     text-align: center;
-    margin-bottom: 20px;
+    position: relative;
 }
 
-.banner-destaque h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #1E3A8A;
 }
 
-.banner-destaque p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+.close-popup:hover {
+    color: #10B981;
 }
 
-.banner-destaque .btn {
-    font-size: 1.1rem;
-    padding: 15px 30px;
+.popup-form input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.popup-form button {
+    background-color: #3B82F6;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.popup-form button:hover {
+    background-color: #2563EB;
 }
 
 /* Animações */
