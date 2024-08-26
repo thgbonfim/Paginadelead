@@ -1,60 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('#formulario-lead form');
     const popup = document.getElementById('lead-popup');
     const closePopup = document.querySelector('.close-popup');
     const popupForm = document.getElementById('popup-form');
-
-    // Validação e envio do formulário principal
-    if (form) {
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Evita o envio do formulário por enquanto
-
-            const nome = form.querySelector('[name="name"]').value.trim();
-            const email = form.querySelector('[name="email"]').value.trim();
-            const telefone = form.querySelector('[name="phone"]').value.trim();
-            const empresa = form.querySelector('[name="company"]').value.trim();
-            const interesse = form.querySelector('[name="interest"]').value;
-
-            if (nome === '' || email === '' || telefone === '' || empresa === '' || interesse === '') {
-                alert('Por favor, preencha todos os campos.');
-            } else {
-                // Envio dos dados para o HubSpot
-                const hubspotData = {
-                    fields: [
-                        { name: 'firstname', value: nome },
-                        { name: 'email', value: email },
-                        { name: 'phone', value: telefone },
-                        { name: 'company', value: empresa },
-                        { name: 'interesse', value: interesse }
-                    ],
-                    context: {
-                        pageUri: window.location.href,
-                        pageName: document.title
-                    }
-                };
-
-                try {
-                    const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/your-form-guid', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(hubspotData)
-                    });
-
-                    if (response.ok) {
-                        alert('Formulário enviado com sucesso!');
-                        form.reset(); // Limpa os campos do formulário
-                    } else {
-                        alert('Ocorreu um erro ao enviar o formulário.');
-                    }
-                } catch (error) {
-                    console.error('Erro ao enviar dados para o HubSpot:', error);
-                    alert('Ocorreu um erro ao enviar o formulário.');
-                }
-            }
-        });
-    }
 
     // Mostrar o pop-up após alguns segundos
     if (popup) {
@@ -77,38 +24,38 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = popupForm.querySelector('[name="email"]').value.trim();
             if (email === '') {
                 alert('Por favor, insira um e-mail.');
-            } else {
-                // Envio dos dados para o HubSpot
-                const hubspotData = {
-                    fields: [
-                        { name: 'email', value: email }
-                    ],
-                    context: {
-                        pageUri: window.location.href,
-                        pageName: document.title
-                    }
-                };
+                return;
+            }
 
-                try {
-                    const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/your-form-guid', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(hubspotData)
-                    });
+            const hubspotData = {
+                fields: [
+                    { name: 'email', value: email }
+                ],
+                context: {
+                    pageUri: window.location.href,
+                    pageName: document.title
+                }
+            };
 
-                    if (response.ok) {
-                        alert('Obrigado! Em breve entraremos em contato.');
-                        popup.style.display = 'none';
-                        popupForm.reset();
-                    } else {
-                        alert('Ocorreu um erro ao enviar o formulário.');
-                    }
-                } catch (error) {
-                    console.error('Erro ao enviar dados para o HubSpot:', error);
+            try {
+                const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/your-form-guid', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(hubspotData)
+                });
+
+                if (response.ok) {
+                    alert('Obrigado! Em breve entraremos em contato.');
+                    popup.style.display = 'none';
+                    popupForm.reset();
+                } else {
                     alert('Ocorreu um erro ao enviar o formulário.');
                 }
+            } catch (error) {
+                console.error('Erro ao enviar dados para o HubSpot:', error);
+                alert('Ocorreu um erro ao enviar o formulário.');
             }
         });
     }
@@ -116,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Carrossel de depoimentos
     const carrosselContainer = document.querySelector('.carrossel-container');
     const depoimentos = document.querySelectorAll('.depoimento');
-    
+
     if (carrosselContainer && depoimentos.length > 0) {
         let index = 0;
         const totalDepoimentos = depoimentos.length;
