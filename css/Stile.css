@@ -409,3 +409,49 @@ footer {
     color: var(--text-color);
     margin-bottom: 10px;
 }
+
+/* Estilos gerais para o formulário */
+form {
+    max-width: 600px; /* Largura máxima do formulário */
+    margin: 0 auto; /* Centraliza o formulário horizontalmente */
+    padding: 20px; /* Espaçamento interno do formulário */
+    border: 1px solid #ddd; /* Borda ao redor do formulário */
+    border-radius: 8px; /* Bordas arredondadas */
+    background-color: #f9f9f9; /* Cor de fundo do formulário */
+  }
+  
+  /* Estilos para labels */
+  label {
+    display: block; /* Faz com que cada label ocupe a linha inteira */
+    margin-bottom: 10px; /* Espaçamento abaixo de cada label */
+    font-weight: bold; /* Torna o texto da label em negrito */
+  }
+  
+  /* Estilos para campos de input e textarea */
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%; /* Largura total do campo */
+    padding: 10px; /* Espaçamento interno do campo */
+    border: 1px solid #ccc; /* Borda ao redor do campo */
+    border-radius: 4px; /* Bordas arredondadas */
+    box-sizing: border-box; /* Inclui padding e border no cálculo da largura total */
+    margin-bottom: 15px; /* Espaçamento abaixo dos campos */
+  }
+  
+  /* Estilos para o botão de envio */
+  button[type="submit"] {
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 4px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    cursor: pointer; /* Cursor em forma de mão ao passar sobre o botão */
+    font-size: 16px; /* Tamanho da fonte do botão */
+  }
+  
+  /* Estilos para o botão de envio ao passar o mouse */
+  button[type="submit"]:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+  }
+  
