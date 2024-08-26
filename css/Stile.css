@@ -49,14 +49,14 @@ nav {
 }
 
 .navbar-menu li {
-    margin: 0 20px;
+    margin: 0 25px;
 }
 
 .navbar-menu a {
     color: var(--text-color);
     text-decoration: none;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 800;
     transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
@@ -250,7 +250,6 @@ form button:hover {
     background-color: var(--button-hover-bg);
 }
 
-/* Rodapé */
 footer {
     background-color: var(--primary-color);
     color: var(--light-bg);
@@ -260,11 +259,30 @@ footer {
     border-top: 4px solid var(--secondary-color);
 }
 
-footer p {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 400;
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.footer-social a {
+    margin: 0 10px;
+}
+
+.footer-social img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.footer-social img:hover {
+    transform: scale(1.2);
+}
+
+.footer-address p {
+    margin: 5px 0;
+}
+
 
 /* Estilo para o botão de fechamento do pop-up */
 .close-popup {
@@ -312,4 +330,82 @@ footer p {
 .popup-content form input,
 .popup-content form button {
     font-size: 0.9rem; /* Ajuste o tamanho da fonte dos inputs e botões aqui */
+}
+
+/* Seção de Suporte Técnico */
+.suporte-tecnico {
+    background-color: var(--light-bg);
+    padding: 60px 20px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    margin-bottom: 60px;
+}
+
+.suporte-tecnico h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.suporte-tecnico p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.formulario-suporte {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.formulario-suporte label {
+    margin-bottom: 5px;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.formulario-suporte input,
+.formulario-suporte textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+}
+
+.formulario-suporte button {
+    background-color: var(--button-bg);
+    color: var(--light-bg);
+    padding: 12px 30px;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-suporte button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.contato-direto {
+    text-align: center;
+}
+
+.contato-direto h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.contato-direto p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
 }
