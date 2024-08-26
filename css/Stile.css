@@ -97,7 +97,7 @@ nav {
 /* Ajuste para dispositivos móveis */
 @media (max-width: 768px) {
     .banner-destaque h1 {
-        font-size: 2.0rem; /* Ajuste o tamanho conforme necessário */
+        font-size: 2.5rem; /* Ajuste o tamanho conforme necessário */
         margin-bottom: 15px;
     }
 
