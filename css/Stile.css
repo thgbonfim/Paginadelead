@@ -1,3 +1,19 @@
+/* Definindo Variáveis */
+:root {
+    --primary-color: #1E3A8A;
+    --secondary-color: #10B981;
+    --accent-color: #059669;
+    --light-bg: #FFFFFF;
+    --dark-bg: #F3F4F6;
+    --text-color: #1E3A8A;
+    --button-bg: #3B82F6;
+    --button-hover-bg: #2563EB;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-hover-color: rgba(0, 0, 0, 0.2);
+    --border-color: #d1d5db;
+    --radius: 8px;
+}
+
 /* Reset de Estilos Básicos */
 * {
     margin: 0;
@@ -8,8 +24,8 @@
 /* Estilos Globais */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #F3F4F6;
-    color: #1E3A8A;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
     line-height: 1.6;
 }
 
@@ -19,32 +35,34 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #FFFFFF;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--light-bg);
+    box-shadow: 0 2px 4px var(--shadow-color);
     z-index: 1000;
-}
-
-nav ul {
     display: flex;
     justify-content: center;
-    padding: 10px 0;
+    padding: 15px 0;
+}
+
+.navbar-menu {
+    display: flex;
     list-style: none;
 }
 
-nav ul li {
-    margin: 0 15px;
+.navbar-menu li {
+    margin: 0 20px;
 }
 
-nav ul li a {
-    color: #1E3A8A;
+.navbar-menu a {
+    color: var(--text-color);
     text-decoration: none;
     font-size: 1rem;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #10B981;
+.navbar-menu a:hover {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
 }
 
 /* Container Principal */
@@ -57,14 +75,13 @@ nav ul li a:hover {
 
 /* Banner de Destaque */
 .banner-destaque {
-    background-color: #1E3A8A;
-    color: #FFFFFF;
-    padding: 80px 20px;
+    background-color: var(--primary-color);
+    color: var(--light-bg);
+    padding: 100px 20px;
     text-align: center;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #10B981;
+    margin-bottom: 30px;
+    border-bottom: 4px solid var(--secondary-color);
     position: relative;
-    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,81 +90,86 @@ nav ul li a:hover {
 
 .banner-destaque h1 {
     font-size: 3.5rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
 .banner-destaque p {
-    font-size: 1.5rem;
-    margin-bottom: 25px;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
 }
 
 .banner-destaque .btn {
     font-size: 1.2rem;
     padding: 15px 30px;
-    background-color: #10B981;
-    color: #FFFFFF;
+    background-color: var(--secondary-color);
+    color: var(--light-bg);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: var(--radius);
     transition: background-color 0.3s ease;
     border: none;
     cursor: pointer;
 }
 
 .banner-destaque .btn:hover {
-    background-color: #059669;
+    background-color: var(--accent-color);
 }
 
 /* Seções */
 section {
-    margin-bottom: 40px;
-    padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+    padding: 40px;
+    background-color: var(--light-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 /* Títulos das Seções */
 h2 {
-    color: #1E3A8A;
-    font-size: 2rem;
-    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 10px;
 }
 
 /* Seção Sobre os Planos */
-.planos-lista {
+.planos-lista, .recursos-lista {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
 }
 
-.plano {
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.plano, .recurso {
+    background-color: var(--light-bg);
+    border-radius: var(--radius);
+    padding: 25px;
+    box-shadow: 0 6px 12px var(--shadow-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.plano:hover {
+.plano:hover, .recurso:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px var(--shadow-hover-color);
 }
 
-.plano h3 {
+.plano h3, .recurso h3 {
     font-size: 1.8rem;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 
-.plano ul {
-    list-style-type: disc;
+.plano ul, .recurso ul {
+    list-style: disc;
     margin-left: 20px;
 }
 
-.plano .btn {
-    background-color: #10B981;
-    color: #FFFFFF;
+.plano .btn, .recurso a {
+    background-color: var(--secondary-color);
+    color: var(--light-bg);
     padding: 12px 24px;
-    border-radius: 8px;
+    border-radius: var(--radius);
     text-decoration: none;
     font-size: 1rem;
     transition: background-color 0.3s ease;
@@ -157,35 +179,26 @@ h2 {
     margin-top: 15px;
 }
 
-.plano .btn:hover {
-    background-color: #059669;
+.plano .btn:hover, .recurso a:hover {
+    background-color: var(--accent-color);
+    text-decoration: underline;
 }
 
 /* Seção de Depoimentos */
 #depoimentos {
-    text-align: center; /* Centraliza o texto dentro da seção */
+    text-align: center;
+    position: relative;
 }
 
 #depoimentos h2 {
-    margin-bottom: 20px; /* Adiciona um espaço abaixo do título */
+    margin-bottom: 30px;
 }
 
-.depoimentos-lista {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    overflow: hidden;
-    width: 100%;
-}
-
-/* Estilos do carrossel */
 .carrossel {
     position: relative;
     overflow: hidden;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: auto; /* Ajuste a altura conforme necessário */
 }
 
 .carrossel-container {
@@ -195,92 +208,71 @@ h2 {
 }
 
 .depoimento {
-    flex: 1 0 100%; /* Faz cada depoimento ocupar 100% da largura do carrossel */
+    flex: 1 0 100%;
     box-sizing: border-box;
     padding: 20px;
     background: #f9f9f9;
-    border-radius: 8px;
-    text-align: center; /* Centraliza o texto dentro do depoimento */
-    min-width: 300px; /* Define uma largura mínima para os depoimentos */
-}
-
-/* Seção de Recursos */
-.recursos-lista {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.recurso {
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.recurso:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.recurso h3 a {
-    color: #1E3A8A;
-    text-decoration: none;
-}
-
-.recurso h3 a:hover {
-    text-decoration: underline;
+    border-radius: var(--radius);
+    text-align: center;
+    min-width: 100%; /* Garante que cada depoimento ocupe 100% da largura do carrossel */
 }
 
 /* Estilos para Formulários */
 form input, form select, form button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
     font-size: 1rem;
 }
 
 form button {
-    background-color: #3B82F6;
-    color: #FFFFFF;
+    background-color: var(--button-bg);
+    color: var(--light-bg);
     cursor: pointer;
+    border: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
 
 form button:hover {
-    background-color: #2563EB;
+    background-color: var(--button-hover-bg);
 }
 
 /* Rodapé */
 footer {
-    background-color: #1E3A8A;
-    color: #FFFFFF;
+    background-color: var(--primary-color);
+    color: var(--light-bg);
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
+    padding: 30px 20px;
+    margin-top: 60px;
+    border-top: 4px solid var(--secondary-color);
 }
 
 footer p {
     margin: 0;
     font-size: 1rem;
+    font-weight: 400;
 }
 
 /* Estilo para o botão de fechamento do pop-up */
-.btn-close {
+.close-popup {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    color: #fff;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
     cursor: pointer;
-    z-index: 1001; /* Garante que o botão esteja sobre outros elementos */
+}
+
+.close-popup:hover {
+    color: var(--secondary-color);
 }
 
 /* Estilo do pop-up */
 .popup {
-    display: none; /* Inicialmente oculto */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -293,58 +285,10 @@ footer p {
 }
 
 .popup-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    background: var(--light-bg);
+    padding: 30px;
+    border-radius: var(--radius);
     position: relative;
-}
-
-.close-popup {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #1E3A8A;
-}
-
-.close-popup:hover {
-    color: #10B981;
-}
-
-.popup-form input {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-.popup-form button {
-    background-color: #3B82F6;
-    color: #FFFFFF;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.popup-form button:hover {
-    background-color: #2563EB;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .banner-destaque {
-        padding: 60px 10px;
-        height: auto;
-    }
-
-    .banner-destaque h1 {
-        font-size: 2.5rem;
-    }
-
-    .banner-destaque p {
-        font-size: 1.2rem;
-    }
+    width: 90%;
+    max-width: 500px;
 }

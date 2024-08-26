@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (popup) {
             setTimeout(() => {
                 popup.style.display = 'flex';
-            }, 5000); // Exibe após 5 segundos
+            }, 7000); // Exibe após 5 segundos
         }
     };
 
@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 try {
-
                     const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/109d455e-5686-4677-a385-cf30a8f20779', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -71,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (carrosselContainer && depoimentos.length > 0) {
             let index = 0;
             const totalDepoimentos = depoimentos.length;
+            const tempoTroca = 7000; // Tempo de troca em milissegundos
 
             const mostrarDepoimento = () => {
                 const largura = depoimentos[0].clientWidth;
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Inicializa o carrossel
             mostrarDepoimento();
-            setInterval(proximoDepoimento, 5000); // Muda a cada 5 segundos
+            setInterval(proximoDepoimento, tempoTroca); // Muda a cada 5 segundos
 
             // Ajuste da largura do carrossel em redimensionamentos
             window.addEventListener('resize', mostrarDepoimento);
