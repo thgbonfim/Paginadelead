@@ -94,6 +94,23 @@ nav {
     font-weight: 700;
 }
 
+/* Ajuste para dispositivos móveis */
+@media (max-width: 768px) {
+    .banner-destaque h1 {
+        font-size: 2.5rem; /* Ajuste o tamanho conforme necessário */
+        margin-bottom: 15px;
+    }
+
+    .banner-destaque p {
+        font-size: 1.2rem; /* Ajuste o tamanho conforme necessário */
+    }
+
+    .banner-destaque .btn {
+        font-size: 1rem; /* Ajuste o tamanho conforme necessário */
+        padding: 10px 20px; /* Ajuste o padding conforme necessário */
+    }
+}
+
 .banner-destaque p {
     font-size: 1.4rem;
     margin-bottom: 30px;
@@ -286,8 +303,6 @@ footer p {
     max-width: 500px;
     font-size: 0.9rem; /* Ajuste o tamanho da fonte aqui */
 }
-
-
 
 .popup-content p {
     font-size: 1rem; /* Ajuste o tamanho da fonte do texto do parágrafo aqui */
