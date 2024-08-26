@@ -100,6 +100,10 @@ nav ul li a:hover {
         margin: 10px 0;
         text-align: center; /* Centraliza os links em dispositivos móveis */
     }
+
+    nav ul li a {
+        font-size: 1.2rem; /* Ajusta o tamanho da fonte para 1.2rem em dispositivos móveis */
+    }
 }
 
 /* Container Principal */
@@ -264,6 +268,7 @@ h2 {
 
     .depoimento {
         flex: 0 0 80%; /* Define a largura dos depoimentos para 80% da tela em dispositivos móveis */
+        font-size: 1rem; /* Ajusta o tamanho do texto para 1rem */
     }
 }
 
@@ -296,60 +301,43 @@ h2 {
     text-decoration: underline;
 }
 
-/* Estilos para Formulários */
-form input, form select, form button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
+.recurso p {
     font-size: 1rem;
+    margin-bottom: 15px;
 }
 
-form button {
-    background-color: #3B82F6;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #2563EB;
-}
-
-/* Rodapé */
-footer {
+.footer {
     background-color: #1E3A8A;
     color: #FFFFFF;
+    padding: 40px 20px;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
 }
 
-footer p {
-    margin: 0;
-    font-size: 1rem;
+.footer h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
-/* Estilo para o botão de fechamento do pop-up */
-.btn-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #FFFFFF;
-    border: none;
-    color: #1E3A8A;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 50%;
-    padding: 5px 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.footer ul {
+    list-style: none;
+    padding: 0;
 }
 
-.btn-close:hover {
-    background-color: #F3F4F6;
+.footer ul li {
+    margin-bottom: 10px;
 }
 
-/* Animações */
+.footer ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.footer ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos de Animação */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -359,21 +347,50 @@ footer p {
     }
 }
 
-/* Popup de Captura de Leads */
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFFFFF;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: none; /* Escondido por padrão */
-    border-radius: 8px;
+.fadeIn {
+    animation: fadeIn 1s ease-in-out;
 }
 
-.popup.show {
-    display: block;
-    animation: fadeIn 0.3s ease-in-out;
+/* Estilos para Dispositivos Móveis */
+@media (max-width: 768px) {
+    .banner-destaque h1 {
+        font-size: 2rem; /* Reduz o tamanho da fonte para 2rem */
+    }
+
+    .banner-destaque p {
+        font-size: 1.2rem; /* Reduz o tamanho da fonte para 1.2rem */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Reduz o tamanho da fonte para 1.5rem */
+    }
+
+    .plano h3, .recurso h3 {
+        font-size: 1.4rem; /* Reduz o tamanho da fonte para 1.4rem */
+    }
+
+    .depoimento {
+        font-size: 1rem; /* Ajusta o tamanho do texto para 1rem */
+    }
+
+    footer h2 {
+        font-size: 1.5rem; /* Reduz o tamanho da fonte para 1.5rem */
+    }
+
+    .container h2 {
+        font-size: 1.7rem; /* Reduz o tamanho da fonte para 1.7rem */
+    }
+
+    .container p {
+        font-size: 1rem; /* Reduz o tamanho da fonte para 1rem */
+    }
+
+    .banner-destaque .btn, .plano .btn {
+        font-size: 1rem; /* Reduz o tamanho da fonte dos botões para 1rem */
+        padding: 12px 24px; /* Ajusta o padding dos botões */
+    }
+
+    .depoimento {
+        flex: 0 0 90%; /* Define a largura dos depoimentos para 90% da tela em dispositivos móveis */
+    }
 }
