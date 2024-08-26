@@ -80,6 +80,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const proximoDepoimento = () => {
                 index = (index + 1) % totalDepoimentos;
                 mostrarDepoimento();
+            }; const initCarrossel = () => {
+        const carrosselContainer = document.querySelector('.carrossel-container');
+        const depoimentos = document.querySelectorAll('.depoimento');
+
+        if (carrosselContainer && depoimentos.length > 0) {
+            let index = 0;
+            const totalDepoimentos = depoimentos.length;
+            const tempoTroca = 7000; // Tempo de troca em milissegundos
+
+            const mostrarDepoimento = () => {
+                const largura = depoimentos[0].clientWidth;
+                carrosselContainer.style.transform = `translateX(-${largura * index}px)`;
+            };
+
+            const proximoDepoimento = () => {
+                index = (index + 1) % totalDepoimentos;
+                mostrarDepoimento();
             };
 
             // Inicializa o carrossel
