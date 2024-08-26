@@ -37,6 +37,16 @@ nav {
     background-color: #FFFFFF;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    display: flex; /* Alinha itens no eixo X */
+    justify-content: space-between; /* Espaçamento entre o logo e o menu */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 10px 20px;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1E3A8A;
 }
 
 nav ul {
@@ -75,6 +85,11 @@ nav ul li a:hover {
         flex-direction: column;
         padding: 20px 0;
         background-color: #FFFFFF;
+        position: absolute;
+        top: 60px; /* Abaixo do nav fixo */
+        left: 0;
+        right: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     nav ul.show-menu {
@@ -83,6 +98,7 @@ nav ul li a:hover {
 
     nav ul li {
         margin: 10px 0;
+        text-align: center; /* Centraliza os links em dispositivos móveis */
     }
 }
 
@@ -240,7 +256,6 @@ h2 {
 
 @media (max-width: 768px) {
     .carrossel-container {
-        display: flex;
         flex-direction: row; /* Mantém os itens em linha horizontal */
         gap: 10px; /* Espaçamento entre os depoimentos */
         overflow-x: auto; /* Permite rolagem horizontal */
