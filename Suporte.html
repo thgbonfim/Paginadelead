@@ -69,33 +69,34 @@
             <h2>Suporte Técnico</h2>
             <p>Estamos aqui para ajudar! Entre em contato conosco pelo formulário abaixo ou através das nossas
                 informações de contato.</p>
-<!-- Formulário de Suporte -->
-<form action="https://formspree.io/f/mnnawjje" method="POST">
-    <label for="nome">
-      Seu nome:
-      <input type="text" id="nome" name="nome" required>
-    </label>
-  
-    <label for="email">
-      Seu e-mail:
-      <input type="email" id="email" name="email" required>
-    </label>
-  
-    <label for="telefone">
-      Seu telefone:
-      <input type="tel" id="telefone" name="telefone" required>
-    </label>
-  
-    <label for="mensagem">
-      Sua mensagem:
-      <textarea id="mensagem" name="message" rows="4" required></textarea>
-    </label>
-  
-    <!-- Adicione outros campos do formulário aqui, se necessário -->
-    
-    <button type="submit">Enviar</button>
-  </form>
-  
+
+            <!-- Formulário de Suporte -->
+            <form action="https://formspree.io/f/mnnawjje" method="POST">
+                <label for="nome">
+                    Seu nome:
+                    <input type="text" id="nome" name="nome" required>
+                </label><br>
+
+                <label for="email">
+                    Seu e-mail:
+                    <input type="email" id="email" name="email" required>
+                </label><br>
+
+                <label for="telefone">
+                    Seu telefone:
+                    <input type="tel" id="telefone" name="telefone" required>
+                </label><br>
+
+                <label for="mensagem">
+                    Sua mensagem:
+                    <textarea id="mensagem" name="message" rows="4" required></textarea>
+                </label><br>
+
+                <!-- Campo oculto que o Formspree pode exigir para evitar spam -->
+                <input type="hidden" name="_captcha" value="false">
+
+                <button type="submit">Enviar</button>
+            </form>
 
 
             <!-- Informações de Contato Direto -->
