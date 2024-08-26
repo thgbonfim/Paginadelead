@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (popup) {
             setTimeout(() => {
                 popup.style.display = 'flex';
-            }, 7000); // Exibe após 5 segundos
+            }, 1000); // Exibe após 5 segundos
         }
     };
 
