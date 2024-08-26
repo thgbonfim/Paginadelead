@@ -163,11 +163,11 @@ h2 {
 
 /* Seção de Depoimentos */
 #depoimentos {
-    text-align: center; /* Centraliza o texto dentro da seção */
+    text-align: center;
 }
 
 #depoimentos h2 {
-    margin-bottom: 20px; /* Adiciona um espaço abaixo do título */
+    margin-bottom: 20px;
 }
 
 .depoimentos-lista {
@@ -195,13 +195,13 @@ h2 {
 }
 
 .depoimento {
-    flex: 1 0 100%; /* Faz cada depoimento ocupar 100% da largura do carrossel */
+    flex: 1 0 100%;
     box-sizing: border-box;
     padding: 20px;
     background: #f9f9f9;
     border-radius: 8px;
-    text-align: center; /* Centraliza o texto dentro do depoimento */
-    min-width: 300px; /* Define uma largura mínima para os depoimentos */
+    text-align: center;
+    min-width: 300px;
 }
 
 /* Seção de Recursos */
@@ -275,12 +275,12 @@ footer p {
     font-size: 24px;
     color: #fff;
     cursor: pointer;
-    z-index: 1001; /* Garante que o botão esteja sobre outros elementos */
+    z-index: 1001;
 }
 
 /* Estilo do pop-up */
 .popup {
-    display: none; /* Inicialmente oculto */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -334,17 +334,76 @@ footer p {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+    .container {
+        padding: 15px;
+    }
+
     .banner-destaque {
-        padding: 60px 10px;
+        padding: 60px 15px;
         height: auto;
     }
 
     .banner-destaque h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
 
     .banner-destaque p {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .banner-destaque {
+        padding: 40px 10px;
+        height: auto;
+    }
+
+    .banner-destaque h1 {
+        font-size: 2rem;
+    }
+
+    .banner-destaque p {
+        font-size: 1.1rem;
+    }
+
+    .planos-lista,
+    .recursos-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .carrossel {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-destaque h1 {
+        font-size: 1.5rem;
+    }
+
+    .banner-destaque p {
+        font-size: 1rem;
+    }
+
+    form input, form select, form button {
+        font-size: 0.9rem;
+    }
+
+    .popup-form input,
+    .popup-form button {
+        font-size: 0.9rem;
+    }
+
+    .footer p {
+        font-size: 0.9rem;
     }
 }
