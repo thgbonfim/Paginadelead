@@ -1,88 +1,98 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const popup = document.getElementById('lead-popup');
-    const closePopup = document.querySelector('.close-popup');
-    const popupForm = document.getElementById('popup-form');
+    // Função para mostrar o pop-up
+    const showPopup = () => {
+        const popup = document.getElementById('lead-popup');
+        if (popup) {
+            setTimeout(() => {
+                popup.style.display = 'flex';
+            }, 5000); // Exibe após 5 segundos
+        }
+    };
 
-    // Mostrar o pop-up após alguns segundos
-    if (popup) {
-        setTimeout(() => {
-            popup.style.display = 'flex';
-        }, 5000); // 5 segundos
-    }
+    // Função para fechar o pop-up
+    const closePopup = () => {
+        const popup = document.getElementById('lead-popup');
+        const closePopupButton = document.querySelector('.close-popup');
+        if (popup && closePopupButton) {
+            closePopupButton.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+        }
+    };
 
-    // Fechar o pop-up
-    if (closePopup) {
-        closePopup.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
-    }
-
-    // Adicionar funcionalidade ao formulário do pop-up
-    if (popupForm) {
-        popupForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const email = popupForm.querySelector('[name="email"]').value.trim();
-            if (email === '') {
-                alert('Por favor, insira um e-mail.');
-                return;
-            }
-
-            const hubspotData = {
-                fields: [
-                    { name: 'email', value: email }
-                ],
-                context: {
-                    pageUri: window.location.href,
-                    pageName: document.title
+    // Função para enviar o formulário do pop-up
+    const handlePopupForm = () => {
+        const popupForm = document.getElementById('popup-form');
+        if (popupForm) {
+            popupForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const email = popupForm.querySelector('[name="email"]').value.trim();
+                if (!email) {
+                    alert('Por favor, insira um e-mail.');
+                    return;
                 }
-            };
 
-            try {
-                const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/your-form-guid', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(hubspotData)
-                });
+                const hubspotData = {
+                    fields: [{ name: 'email', value: email }],
+                    context: {
+                        pageUri: window.location.href,
+                        pageName: document.title
+                    }
+                };
 
-                if (response.ok) {
-                    alert('Obrigado! Em breve entraremos em contato.');
-                    popup.style.display = 'none';
-                    popupForm.reset();
-                } else {
+                try {
+                    const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/your-form-guid', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(hubspotData)
+                    });
+
+                    if (response.ok) {
+                        alert('Obrigado! Em breve entraremos em contato.');
+                        popupForm.reset();
+                        document.getElementById('lead-popup').style.display = 'none';
+                    } else {
+                        alert('Ocorreu um erro ao enviar o formulário.');
+                    }
+                } catch (error) {
+                    console.error('Erro ao enviar dados para o HubSpot:', error);
                     alert('Ocorreu um erro ao enviar o formulário.');
                 }
-            } catch (error) {
-                console.error('Erro ao enviar dados para o HubSpot:', error);
-                alert('Ocorreu um erro ao enviar o formulário.');
-            }
-        });
-    }
-
-    // Carrossel de depoimentos
-    const carrosselContainer = document.querySelector('.carrossel-container');
-    const depoimentos = document.querySelectorAll('.depoimento');
-
-    if (carrosselContainer && depoimentos.length > 0) {
-        let index = 0;
-        const totalDepoimentos = depoimentos.length;
-
-        function mostrarDepoimento() {
-            const largura = depoimentos[0].clientWidth;
-            carrosselContainer.style.transform = `translateX(-${largura * index}px)`;
+            });
         }
+    };
 
-        function proximoDepoimento() {
-            index = (index + 1) % totalDepoimentos;
+    // Função para inicializar o carrossel de depoimentos
+    const initCarrossel = () => {
+        const carrosselContainer = document.querySelector('.carrossel-container');
+        const depoimentos = document.querySelectorAll('.depoimento');
+
+        if (carrosselContainer && depoimentos.length > 0) {
+            let index = 0;
+            const totalDepoimentos = depoimentos.length;
+
+            const mostrarDepoimento = () => {
+                const largura = depoimentos[0].clientWidth;
+                carrosselContainer.style.transform = `translateX(-${largura * index}px)`;
+            };
+
+            const proximoDepoimento = () => {
+                index = (index + 1) % totalDepoimentos;
+                mostrarDepoimento();
+            };
+
+            // Inicializa o carrossel
             mostrarDepoimento();
+            setInterval(proximoDepoimento, 5000); // Muda a cada 5 segundos
+
+            // Ajuste da largura do carrossel em redimensionamentos
+            window.addEventListener('resize', mostrarDepoimento);
         }
+    };
 
-        // Inicializa o carrossel
-        mostrarDepoimento();
-        setInterval(proximoDepoimento, 5000); // Muda a cada 5 segundos
-
-        // Ajuste da largura do carrossel em redimensionamentos
-        window.addEventListener('resize', mostrarDepoimento);
-    }
+    // Executa as funções
+    showPopup();
+    closePopup();
+    handlePopupForm();
+    initCarrossel();
 });
