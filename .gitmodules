@@ -1,4 +1,0 @@
-nano .gitmodules
-[submodule "Paginadelead"]
-    path = Paginalead
-    url = https://github.com/thgbonfim/Paginadelead/main
