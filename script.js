@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     const showPopup = () => {
         const popup = document.getElementById('lead-popup');
         if (popup) {
