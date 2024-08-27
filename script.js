@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Função para mostrar o pop-up
+
+    // Função para mostrar o pop-up após um atraso
     const showPopup = () => {
         const popup = document.getElementById('lead-popup');
         if (popup) {
@@ -20,35 +21,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Função para gerenciar o envio do formulário do pop-up
     const handlePopupForm = () => {
         const popupForm = document.getElementById('popup-form');
         if (popupForm) {
             popupForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
+                
                 const email = popupForm.querySelector('[name="email"]').value.trim();
                 if (!email) {
                     alert('Por favor, insira um e-mail.');
                     return;
                 }
-    
+
                 const hubspotData = {
-                    fields: [
-                        { name: 'email', value: email },
-                        // Adicione outros campos se necessário
-                    ],
+                    fields: [{ name: 'email', value: email }],
                     context: {
                         pageUri: window.location.href,
                         pageName: document.title
                     }
                 };
-    
+
                 try {
                     const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/109d455e-5686-4677-a385-cf30a8f20779', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(hubspotData)
                     });
-    
+
                     if (response.ok) {
                         alert('Obrigado! Em breve entraremos em contato.');
                         popupForm.reset();
@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     };
-    
 
     // Função para inicializar o carrossel de depoimentos
     const initCarrossel = () => {
@@ -89,9 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Inicializa o carrossel
             mostrarDepoimento();
-            setInterval(proximoDepoimento, tempoTroca); // Muda a cada 5 segundos
+            setInterval(proximoDepoimento, tempoTroca); // Muda a cada 7 segundos
 
-            // Ajuste da largura do carrossel em redimensionamentos
+            // Ajusta a largura do carrossel em redimensionamentos
             window.addEventListener('resize', mostrarDepoimento);
         }
     };
