@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Função para mostrar o pop-up após um atraso
     const showPopup = () => {
         const popup = document.getElementById('lead-popup');
         if (popup) {
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Função para fechar o pop-up
     const closePopup = () => {
         const popup = document.getElementById('lead-popup');
         const closePopupButton = document.querySelector('.close-popup');
@@ -21,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Função para gerenciar o envio do formulário do pop-up
     const handlePopupForm = () => {
         const popupForm = document.getElementById('popup-form');
         if (popupForm) {
@@ -66,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Função para inicializar o carrossel de depoimentos
     const initCarrossel = () => {
         const carrosselContainer = document.querySelector('.carrossel-container');
         const depoimentos = document.querySelectorAll('.depoimento');
@@ -86,16 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 mostrarDepoimento();
             };
 
-            // Inicializa o carrossel
             mostrarDepoimento();
             setInterval(proximoDepoimento, tempoTroca); // Muda a cada 7 segundos
 
-            // Ajusta a largura do carrossel em redimensionamentos
             window.addEventListener('resize', mostrarDepoimento);
         }
     };
 
-    // Executa as funções
     showPopup();
     closePopup();
     handlePopupForm();
