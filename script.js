@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Função para enviar o formulário do pop-up
     const handlePopupForm = () => {
         const popupForm = document.getElementById('popup-form');
         if (popupForm) {
@@ -31,36 +30,42 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Por favor, insira um e-mail.');
                     return;
                 }
-
+    
                 const hubspotData = {
-                    fields: [{ name: 'email', value: email }],
+                    fields: [
+                        { name: 'email', value: email },
+                        // Adicione outros campos se necessário
+                    ],
                     context: {
                         pageUri: window.location.href,
                         pageName: document.title
                     }
                 };
-
+    
                 try {
                     const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/109d455e-5686-4677-a385-cf30a8f20779', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(hubspotData)
                     });
-
+    
                     if (response.ok) {
                         alert('Obrigado! Em breve entraremos em contato.');
                         popupForm.reset();
                         document.getElementById('lead-popup').style.display = 'none';
                     } else {
-                        alert('Ocorreu um erro ao enviar o formulário.');
+                        const errorData = await response.json();
+                        console.error('Erro ao enviar dados para o HubSpot:', errorData);
+                        alert('Ocorreu um erro ao enviar o formulário. Verifique os detalhes no console.');
                     }
                 } catch (error) {
                     console.error('Erro ao enviar dados para o HubSpot:', error);
-                    alert('Ocorreu um erro ao enviar o formulário.');
+                    alert('Ocorreu um erro ao enviar o formulário. Verifique os detalhes no console.');
                 }
             });
         }
     };
+    
 
     // Função para inicializar o carrossel de depoimentos
     const initCarrossel = () => {
