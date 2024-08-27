@@ -445,7 +445,7 @@ button[type="submit"]:hover {
 /* Estilo para o ícone do WhatsApp */
 .whatsapp-header {
     position: fixed;
-    bottom: 80px; /* Ajustado para elevar o ícone */
+    bottom: 280px; /* Ajustado para elevar o ícone */
     right: 20px;
     z-index: 1000;
 }
