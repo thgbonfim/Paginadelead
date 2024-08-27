@@ -1,95 +1,96 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const showPopup = () => {
-        const popup = document.getElementById('lead-popup');
-        if (popup) {
-            setTimeout(() => {
-                popup.style.display = 'flex';
-            }, 5000); // Exibe após 5 segundos
-        }
-    };
+    const form = document.querySelector('#formulario-lead form');
+    const popup = document.getElementById('lead-popup');
+    const closePopup = document.querySelector('.close-popup');
+    const popupForm = document.getElementById('popup-form');
 
-    const closePopup = () => {
-        const popup = document.getElementById('lead-popup');
-        const closePopupButton = document.querySelector('.close-popup');
-        if (popup && closePopupButton) {
-            closePopupButton.addEventListener('click', () => {
+    // Validação e envio do formulário principal
+    if (form) {
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Evita o envio do formulário por enquanto
+
+            const nome = form.querySelector('[name="name"]').value.trim();
+            const email = form.querySelector('[name="email"]').value.trim();
+            const telefone = form.querySelector('[name="phone"]').value.trim();
+            const empresa = form.querySelector('[name="company"]').value.trim();
+            const interesse = form.querySelector('[name="interest"]').value;
+
+            if (nome === '' || email === '' || telefone === '' || empresa === '' || interesse === '') {
+                alert('Por favor, preencha todos os campos.');
+            } else {
+                alert('Formulário enviado com sucesso!');
+                form.reset(); // Limpa os campos do formulário
+            }
+        });
+    }
+
+    // Mostrar o pop-up após alguns segundos
+    if (popup) {
+        setTimeout(() => {
+            popup.style.display = 'flex';
+        }, 5000); // 5 segundos
+    }
+
+    // Fechar o pop-up
+    if (closePopup) {
+        closePopup.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+    }
+
+    // Adicionar funcionalidade ao formulário do pop-up
+    if (popupForm) {
+        popupForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = popupForm.querySelector('[name="email"]').value.trim();
+            if (email === '') {
+                alert('Por favor, insira um e-mail.');
+            } else {
+                alert('Obrigado! Em breve entraremos em contato.');
                 popup.style.display = 'none';
-            });
+                popupForm.reset();
+            }
+        });
+    }
+
+    // Carrossel de Depoimentos
+    const carrosselContainer = document.querySelector('.carrossel-container');
+    const depoimentos = document.querySelectorAll('.depoimento');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    if (carrosselContainer && depoimentos.length > 0) {
+        let index = 0;
+        const totalDepoimentos = depoimentos.length;
+    
+        function mostrarDepoimento() {
+            const largura = depoimentos[0].clientWidth;
+            carrosselContainer.style.transform = `translateX(-${largura * index}px)`;
         }
-    };
-
-    const handlePopupForm = () => {
-        const popupForm = document.getElementById('popup-form');
-        if (popupForm) {
-            popupForm.addEventListener('submit', async (event) => {
-                event.preventDefault();
-                
-                const email = popupForm.querySelector('[name="email"]').value.trim();
-                if (!email) {
-                    alert('Por favor, insira um e-mail.');
-                    return;
-                }
-
-                const hubspotData = {
-                    fields: [{ name: 'email', value: email }],
-                    context: {
-                        pageUri: window.location.href,
-                        pageName: document.title
-                    }
-                };
-
-                try {
-                    const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/109d455e-5686-4677-a385-cf30a8f20779', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(hubspotData)
-                    });
-
-                    if (response.ok) {
-                        alert('Obrigado! Em breve entraremos em contato.');
-                        popupForm.reset();
-                        document.getElementById('lead-popup').style.display = 'none';
-                    } else {
-                        const errorData = await response.json();
-                        console.error('Erro ao enviar dados para o HubSpot:', errorData);
-                        alert('Ocorreu um erro ao enviar o formulário. Verifique os detalhes no console.');
-                    }
-                } catch (error) {
-                    console.error('Erro ao enviar dados para o HubSpot:', error);
-                    alert('Ocorreu um erro ao enviar o formulário. Verifique os detalhes no console.');
-                }
-            });
-        }
-    };
-
-    const initCarrossel = () => {
-        const carrosselContainer = document.querySelector('.carrossel-container');
-        const depoimentos = document.querySelectorAll('.depoimento');
-
-        if (carrosselContainer && depoimentos.length > 0) {
-            let index = 0;
-            const totalDepoimentos = depoimentos.length;
-            const tempoTroca = 7000; // Tempo de troca em milissegundos
-
-            const mostrarDepoimento = () => {
-                const largura = depoimentos[0].clientWidth;
-                carrosselContainer.style.transform = `translateX(-${largura * index}px)`;
-            };
-
-            const proximoDepoimento = () => {
-                index = (index + 1) % totalDepoimentos;
-                mostrarDepoimento();
-            };
-
+    
+        function proximoDepoimento() {
+            index = (index + 1) % totalDepoimentos;
             mostrarDepoimento();
-            setInterval(proximoDepoimento, tempoTroca); // Muda a cada 7 segundos
-
-            window.addEventListener('resize', mostrarDepoimento);
         }
-    };
-
-    showPopup();
-    closePopup();
-    handlePopupForm();
-    initCarrossel();
+    
+        function prevDepoimento() {
+            index = (index - 1 + totalDepoimentos) % totalDepoimentos;
+            mostrarDepoimento();
+        }
+    
+        if (prevBtn) {
+            prevBtn.addEventListener('click', prevDepoimento);
+        }
+    
+        if (nextBtn) {
+            nextBtn.addEventListener('click', proximoDepoimento);
+        }
+    
+        // Inicializa o carrossel
+        mostrarDepoimento();
+        setInterval(proximoDepoimento, 8000); // Muda a cada 8 segundos
+    
+        // Ajuste da largura do carrossel em redimensionamentos
+        window.addEventListener('resize', mostrarDepoimento);
+    }
 });
