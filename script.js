@@ -1,96 +1,117 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('#formulario-lead form');
-    const popup = document.getElementById('lead-popup');
-    const closePopup = document.querySelector('.close-popup');
-    const popupForm = document.getElementById('popup-form');
+    // Função para validar o formulário principal
+    const validarFormulario = (form) => {
+        const campos = ['name', 'email', 'phone', 'company', 'interest'];
+        const todosPreenchidos = campos.every(campo => {
+            return form.querySelector(`[name="${campo}"]`).value.trim() !== '';
+        });
 
-    // Validação e envio do formulário principal
-    if (form) {
+        if (!todosPreenchidos) {
+            alert('Por favor, preencha todos os campos.');
+            return false;
+        }
+        return true;
+    };
+
+    // Função para lidar com o envio do formulário principal
+    const enviarFormulario = (form) => {
         form.addEventListener('submit', (event) => {
-            event.preventDefault(); // Evita o envio do formulário por enquanto
+            event.preventDefault(); // Evita o envio padrão
 
-            const nome = form.querySelector('[name="name"]').value.trim();
-            const email = form.querySelector('[name="email"]').value.trim();
-            const telefone = form.querySelector('[name="phone"]').value.trim();
-            const empresa = form.querySelector('[name="company"]').value.trim();
-            const interesse = form.querySelector('[name="interest"]').value;
-
-            if (nome === '' || email === '' || telefone === '' || empresa === '' || interesse === '') {
-                alert('Por favor, preencha todos os campos.');
-            } else {
+            if (validarFormulario(form)) {
                 alert('Formulário enviado com sucesso!');
                 form.reset(); // Limpa os campos do formulário
             }
         });
-    }
+    };
 
-    // Mostrar o pop-up após alguns segundos
-    if (popup) {
-        setTimeout(() => {
-            popup.style.display = 'flex';
-        }, 5000); // 5 segundos
-    }
+    // Função para mostrar o pop-up
+    const mostrarPopup = (popup) => {
+        if (popup) {
+            setTimeout(() => {
+                popup.style.display = 'flex';
+            }, 5000); // 5 segundos
+        }
+    };
 
-    // Fechar o pop-up
-    if (closePopup) {
-        closePopup.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
-    }
-
-    // Adicionar funcionalidade ao formulário do pop-up
-    if (popupForm) {
-        popupForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const email = popupForm.querySelector('[name="email"]').value.trim();
-            if (email === '') {
-                alert('Por favor, insira um e-mail.');
-            } else {
-                alert('Obrigado! Em breve entraremos em contato.');
+    // Função para fechar o pop-up
+    const fecharPopup = (popup, closePopup) => {
+        if (popup && closePopup) {
+            closePopup.addEventListener('click', () => {
                 popup.style.display = 'none';
-                popupForm.reset();
-            }
-        });
-    }
+            });
+        }
+    };
 
-    // Carrossel de Depoimentos
+    // Função para lidar com o envio do formulário do pop-up
+    const enviarFormularioPopup = (popupForm, popup) => {
+        if (popupForm) {
+            popupForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const email = popupForm.querySelector('[name="email"]').value.trim();
+                if (email === '') {
+                    alert('Por favor, insira um e-mail.');
+                } else {
+                    alert('Obrigado! Em breve entraremos em contato.');
+                    popup.style.display = 'none';
+                    popupForm.reset();
+                }
+            });
+        }
+    };
+
+    // Função para inicializar o carrossel de depoimentos
+    const inicializarCarrossel = (carrosselContainer, depoimentos, prevBtn, nextBtn) => {
+        if (carrosselContainer && depoimentos.length > 0) {
+            let index = 0;
+            const totalDepoimentos = depoimentos.length;
+
+            const mostrarDepoimento = () => {
+                const largura = depoimentos[0].clientWidth;
+                carrosselContainer.style.transform = `translateX(-${largura * index}px)`;
+            };
+
+            const proximoDepoimento = () => {
+                index = (index + 1) % totalDepoimentos;
+                mostrarDepoimento();
+            };
+
+            const prevDepoimento = () => {
+                index = (index - 1 + totalDepoimentos) % totalDepoimentos;
+                mostrarDepoimento();
+            };
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', prevDepoimento);
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', proximoDepoimento);
+            }
+
+            // Inicializa o carrossel
+            mostrarDepoimento();
+            setInterval(proximoDepoimento, 8000); // Muda a cada 8 segundos
+
+            // Ajuste da largura do carrossel em redimensionamentos
+            window.addEventListener('resize', mostrarDepoimento);
+        }
+    };
+
+    // Seleciona os elementos
+    const form = document.querySelector('#formulario-lead form');
+    const popup = document.getElementById('lead-popup');
+    const closePopup = document.querySelector('.close-popup');
+    const popupForm = document.getElementById('popup-form');
     const carrosselContainer = document.querySelector('.carrossel-container');
     const depoimentos = document.querySelectorAll('.depoimento');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
-    
-    if (carrosselContainer && depoimentos.length > 0) {
-        let index = 0;
-        const totalDepoimentos = depoimentos.length;
-    
-        function mostrarDepoimento() {
-            const largura = depoimentos[0].clientWidth;
-            carrosselContainer.style.transform = `translateX(-${largura * index}px)`;
-        }
-    
-        function proximoDepoimento() {
-            index = (index + 1) % totalDepoimentos;
-            mostrarDepoimento();
-        }
-    
-        function prevDepoimento() {
-            index = (index - 1 + totalDepoimentos) % totalDepoimentos;
-            mostrarDepoimento();
-        }
-    
-        if (prevBtn) {
-            prevBtn.addEventListener('click', prevDepoimento);
-        }
-    
-        if (nextBtn) {
-            nextBtn.addEventListener('click', proximoDepoimento);
-        }
-    
-        // Inicializa o carrossel
-        mostrarDepoimento();
-        setInterval(proximoDepoimento, 8000); // Muda a cada 8 segundos
-    
-        // Ajuste da largura do carrossel em redimensionamentos
-        window.addEventListener('resize', mostrarDepoimento);
-    }
+
+    // Executa as funções
+    if (form) enviarFormulario(form);
+    mostrarPopup(popup);
+    fecharPopup(popup, closePopup);
+    enviarFormularioPopup(popupForm, popup);
+    inicializarCarrossel(carrosselContainer, depoimentos, prevBtn, nextBtn);
 });
