@@ -49,12 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
             popupForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
                 const email = popupForm.querySelector('[name="email"]').value.trim();
-
+    
                 if (email === '') {
                     alert('Por favor, insira um e-mail.');
                     return;
                 }
-
+    
                 const hubspotData = {
                     fields: [{ name: 'email', value: email }],
                     context: {
@@ -62,21 +62,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         pageName: document.title
                     }
                 };
-
+    
                 try {
                     const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/109d455e-5686-4677-a385-cf30a8f20779', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(hubspotData)
                     });
-
+    
                     if (response.ok) {
                         alert('Obrigado! Em breve entraremos em contato.');
                         popupForm.reset();
                         popup.style.display = 'none';
                     } else {
-                        const errorData = await response.json();
-                        console.error('Erro ao enviar dados para o HubSpot:', errorData);
+                        const errorData = await response.text(); // Mudamos para text() para lidar com respostas não JSON
+                        console.error('Erro ao enviar dados para o HubSpot:', response.status, response.statusText, errorData);
                         alert('Ocorreu um erro ao enviar o formulário. Verifique os detalhes no console.');
                     }
                 } catch (error) {
@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     };
+    
 
     // Função para inicializar o carrossel de depoimentos
     const inicializarCarrossel = (carrosselContainer, depoimentos, prevBtn, nextBtn) => {
