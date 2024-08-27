@@ -56,65 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Função para mostrar o pop-up
-    const mostrarPopup = (popup) => {
-        if (popup) {
-            setTimeout(() => popup.style.display = 'flex', 5000); // 5 segundos
-        }
-    };
-
-    // Função para fechar o pop-up
-    const fecharPopup = (popup, closePopup) => {
-        if (popup && closePopup) {
-            closePopup.addEventListener('click', () => popup.style.display = 'none');
-        }
-    };
-
-    // Função para lidar com o envio do formulário do pop-up
-    const enviarFormularioPopup = async (popupForm, popup) => {
-        if (popupForm) {
-            popupForm.addEventListener('submit', async (event) => {
-                event.preventDefault();
-                const email = popupForm.querySelector('[name="email"]').value.trim();
-
-                if (email === '') {
-                    alert('Por favor, insira um e-mail.');
-                    return;
-                }
-
-                const hubspotData = {
-                    fields: [{ name: 'email', value: email }],
-                    context: {
-                        pageUri: window.location.href,
-                        pageName: document.title
-                    }
-                };
-
-                
-                try {
-                    const response = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/47170835/109d455e-5686-4677-a385-cf30a8f20779', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(hubspotData)
-                    });
-
-                    if (response.ok) {
-                        alert('Obrigado! Em breve entraremos em contato.');
-                        popup.style.display = 'none';
-                        popupForm.reset();
-                    } else {
-                        const errorData = await response.text();
-                        console.error('Erro ao enviar dados para o HubSpot:', response.status, response.statusText, errorData);
-                        alert('Ocorreu um erro ao enviar o formulário.');
-                    }
-                } catch (error) {
-                    console.error('Erro ao enviar dados para o HubSpot:', error);
-                    alert('Ocorreu um erro ao enviar o formulário.');
-                }
-            });
-        }
-    };
-
     // Função para inicializar o carrossel de depoimentos
     const inicializarCarrossel = (carrosselContainer, depoimentos, prevBtn, nextBtn) => {
         if (carrosselContainer && depoimentos.length > 0) {
