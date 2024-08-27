@@ -94,23 +94,6 @@ nav {
     font-weight: 700;
 }
 
-/* Ajuste para dispositivos móveis */
-@media (max-width: 768px) {
-    .banner-destaque h1 {
-        font-size: 2.5rem; /* Ajuste o tamanho conforme necessário */
-        margin-bottom: 15px;
-    }
-
-    .banner-destaque p {
-        font-size: 1.2rem; /* Ajuste o tamanho conforme necessário */
-    }
-
-    .banner-destaque .btn {
-        font-size: 1rem; /* Ajuste o tamanho conforme necessário */
-        padding: 10px 20px; /* Ajuste o padding conforme necessário */
-    }
-}
-
 .banner-destaque p {
     font-size: 1.4rem;
     margin-bottom: 30px;
@@ -132,6 +115,23 @@ nav {
     background-color: var(--accent-color);
 }
 
+/* Ajuste para dispositivos móveis */
+@media (max-width: 768px) {
+    .banner-destaque h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .banner-destaque p {
+        font-size: 1.2rem;
+    }
+
+    .banner-destaque .btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
 /* Seções */
 section {
     margin-bottom: 60px;
@@ -145,20 +145,22 @@ section {
 h2 {
     color: var(--primary-color);
     font-size: 1.8rem;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     font-weight: 600;
     border-bottom: 3px solid var(--secondary-color);
     padding-bottom: 10px;
 }
 
 /* Seção Sobre os Planos */
-.planos-lista, .recursos-lista {
+.planos-lista,
+.recursos-lista {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
 }
 
-.plano, .recurso {
+.plano,
+.recurso {
     background-color: var(--light-bg);
     border-radius: var(--radius);
     padding: 25px;
@@ -166,23 +168,27 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.plano:hover, .recurso:hover {
+.plano:hover,
+.recurso:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px var(--shadow-hover-color);
 }
 
-.plano h3, .recurso h3 {
+.plano h3,
+.recurso h3 {
     font-size: 1.8rem;
     margin-bottom: 15px;
     font-weight: 600;
 }
 
-.plano ul, .recurso ul {
+.plano ul,
+.recurso ul {
     list-style: disc;
     margin-left: 20px;
 }
 
-.plano .btn, .recurso a {
+.plano .btn,
+.recurso a {
     background-color: var(--secondary-color);
     color: var(--light-bg);
     padding: 12px 24px;
@@ -196,7 +202,8 @@ h2 {
     margin-top: 15px;
 }
 
-.plano .btn:hover, .recurso a:hover {
+.plano .btn:hover,
+.recurso a:hover {
     background-color: var(--accent-color);
     text-decoration: underline;
 }
@@ -214,7 +221,6 @@ h2 {
     display: flex;
     transition: transform 0.5s ease-in-out;
     width: 100%;
-    overflow: hidden;
 }
 
 .depoimento {
@@ -224,11 +230,13 @@ h2 {
     background: #f9f9f9;
     border-radius: var(--radius);
     text-align: center;
-    min-width: 300px;
+    min-width: 300px; /* Ajuste o tamanho mínimo conforme necessário */
 }
 
 /* Estilos para Formulários */
-form input, form select, form button {
+form input,
+form select,
+form button {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -283,7 +291,6 @@ footer {
     margin: 5px 0;
 }
 
-
 /* Estilo para o botão de fechamento do pop-up */
 .close-popup {
     position: absolute;
@@ -319,17 +326,17 @@ footer {
     position: relative;
     width: 90%;
     max-width: 500px;
-    font-size: 0.9rem; /* Ajuste o tamanho da fonte aqui */
+    font-size: 0.9rem;
 }
 
 .popup-content p {
-    font-size: 1rem; /* Ajuste o tamanho da fonte do texto do parágrafo aqui */
+    font-size: 1rem;
     margin-bottom: 20px;
 }
 
 .popup-content form input,
 .popup-content form button {
-    font-size: 0.9rem; /* Ajuste o tamanho da fonte dos inputs e botões aqui */
+    font-size: 0.9rem;
 }
 
 /* Seção de Suporte Técnico */
@@ -394,91 +401,66 @@ footer {
     background-color: var(--button-hover-bg);
 }
 
-.contato-direto {
-    text-align: center;
+/* Estilos Gerais para Formulário */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
-.contato-direto h3 {
-    font-size: 1.5rem;
-    color: var(--primary-color);
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
     margin-bottom: 15px;
 }
 
-.contato-direto p {
-    font-size: 1rem;
-    color: var(--text-color);
-    margin-bottom: 10px;
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-/* Estilos gerais para o formulário */
-form {
-    max-width: 600px; /* Largura máxima do formulário */
-    margin: 0 auto; /* Centraliza o formulário horizontalmente */
-    padding: 20px; /* Espaçamento interno do formulário */
-    border: 1px solid #ddd; /* Borda ao redor do formulário */
-    border-radius: 8px; /* Bordas arredondadas */
-    background-color: #f9f9f9; /* Cor de fundo do formulário */
-  }
-  
-  /* Estilos para labels */
-  label {
-    display: block; /* Faz com que cada label ocupe a linha inteira */
-    margin-bottom: 10px; /* Espaçamento abaixo de cada label */
-    font-weight: bold; /* Torna o texto da label em negrito */
-  }
-  
-  /* Estilos para campos de input e textarea */
-  input[type="email"],
-  input[type="tel"],
-  textarea {
-    width: 100%; /* Largura total do campo */
-    padding: 10px; /* Espaçamento interno do campo */
-    border: 1px solid #ccc; /* Borda ao redor do campo */
-    border-radius: 4px; /* Bordas arredondadas */
-    box-sizing: border-box; /* Inclui padding e border no cálculo da largura total */
-    margin-bottom: 15px; /* Espaçamento abaixo dos campos */
-  }
-  
-  /* Estilos para o botão de envio */
-  button[type="submit"] {
-    background-color: #007bff; /* Cor de fundo do botão */
-    color: #fff; /* Cor do texto do botão */
-    border: none; /* Remove a borda padrão */
-    border-radius: 4px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno do botão */
-    cursor: pointer; /* Cursor em forma de mão ao passar sobre o botão */
-    font-size: 16px; /* Tamanho da fonte do botão */
-  }
-  
-  /* Estilos para o botão de envio ao passar o mouse */
-  button[type="submit"]:hover {
-    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
-  }
-  
-  .whatsapp-header {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000; /* Certifique-se de que o ícone esteja acima de outros elementos */
+button[type="submit"]:hover {
+    background-color: #0056b3;
 }
+
+/* Estilo para o ícone do WhatsApp */
 .whatsapp-header {
     position: fixed;
-    bottom: 590px; /* Muda de 20px para 80px para elevar o ícone */
+    bottom: 80px; /* Ajustado para elevar o ícone */
     right: 20px;
-    z-index: 1000; /* Mantém o ícone acima de outros elementos */
+    z-index: 1000;
 }
 
 .whatsapp-icon {
-    font-size: 2em; /* Tamanho do ícone */
-    color: #25D366; /* Cor do ícone do WhatsApp */
-    background-color: rgb(255, 255, 255);
+    font-size: 2em;
+    color: #25D366;
+    background-color: #ffffff;
     border-radius: 50%;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    text-decoration: none; /* Remove sublinhado do link */
+    text-decoration: none;
 }
 
 .whatsapp-icon:hover {
-    transform: scale(3.1); /* Efeito ao passar o mouse */
+    transform: scale(1.2);
 }
