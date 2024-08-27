@@ -4,7 +4,9 @@
 <head>
 
 
-</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -36,41 +38,56 @@
         gtag('js', new Date());
         gtag('config', 'G-DP2T8P3MFW');
     </script>
-   
- <!-- Start of Async Drift Code -->
- <script>
-    "use strict";
 
-    !function () {
-        var t = window.driftt = window.drift = window.driftt || [];
-        if (!t.init) {
-            if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-            t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
-                t.factory = function (e) {
-                    return function () {
-                        var n = Array.prototype.slice.call(arguments);
-                        return n.unshift(e), t.push(n), t;
+    <!-- Start of Async Drift Code -->
+    <script>
+        "use strict";
+
+        !function () {
+            var t = window.driftt = window.drift = window.driftt || [];
+            if (!t.init) {
+                if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+                t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+                    t.factory = function (e) {
+                        return function () {
+                            var n = Array.prototype.slice.call(arguments);
+                            return n.unshift(e), t.push(n), t;
+                        };
+                    }, t.methods.forEach(function (e) {
+                        t[e] = t.factory(e);
+                    }), t.load = function (t) {
+                        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
                     };
-                }, t.methods.forEach(function (e) {
-                    t[e] = t.factory(e);
-                }), t.load = function (t) {
-                    var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-                    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-                    var i = document.getElementsByTagName("script")[0];
-                    i.parentNode.insertBefore(o, i);
-                };
-        }
-    }();
-    drift.SNIPPET_VERSION = '0.3.1';
-    drift.load('aynftpf6386x');
-</script>
-
-
+            }
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('aynftpf6386x');
+    </script>
 </head>
-
+<header>
+    <!-- Outros elementos do header -->
+    <a href="https://wa.me/11957659289" class="whatsapp-icon" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</header>
 <body>
-    
+
+   <!-- Cabeçalho -->
+   <header>
+    <!-- Ícone do WhatsApp -->
+    <div class="whatsapp-header">
+        <a href="https://wa.me/11957659289" class="whatsapp-icon" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+    <!-- Outros elementos do header -->
+</header>
+
   
+
     <!-- End of Async Drift Code -->
     <!-- Navegação -->
     <nav>
@@ -82,7 +99,13 @@
             <li><a href="#depoimentos">Depoimentos</a></li>
             <li><a href="Suporte.html">Suporte Tecnico</a></li>
             <li><a href="#formulario-lead">Contato</a></li>
+        
+            
         </ul>
+    
+
+
+
     </nav>
 
     <!-- Banner de Destaque -->
@@ -92,7 +115,9 @@
             <p>Oferecemos planos de celular e internet personalizados para atender às necessidades da sua empresa.</p>
             <a href="#formulario-lead" class="btn">Fale Conosco</a>
         </div>
+
     </div>
+
 
     <!-- Seção Sobre os Planos -->
     <section id="planos">
@@ -220,13 +245,13 @@
         <div class="footer-container">
             <div class="footer-social">
                 <a href="https://www.facebook.com" target="_blank">
-                    <img src="caminho-para-o-icone-facebook.png" alt="Facebook">
+                    <img src="facebook_1051309.png" alt="Facebook">
                 </a>
                 <a href="https://www.twitter.com" target="_blank">
                     <img src="caminho-para-o-icone-twitter.png" alt="Twitter">
                 </a>
                 <a href="https://www.instagram.com" target="_blank">
-                    <img src="caminho-para-o-icone-instagram.png" alt="Instagram">
+                    <img src="instagram_2111463.png" alt="Instagram">
                 </a>
             </div>
             <div class="footer-address">
@@ -237,7 +262,7 @@
 
             </div>
         </div>
-    </footer>   
+    </footer>
 
 
 
